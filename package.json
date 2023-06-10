@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Master thesis",
   "scripts": {
-    "next": "cd apps/next && pnpm install && npm run build && pnpm run start",
-    "nuxt": "cd apps/nuxt && pnpm install && npm run build && pnpm run start",
+    "a:nuxt": "cd apps/nuxt && pnpm install && pnpm build && pnpm start --port 3000",
+    "a:next": "cd apps/next && pnpm install && pnpm build && pnpm start -p 3001",
     "b:lighthouse": "node benchmarks/lighthouse/index.js",
     "b:chrome": "node benchmarks/chrome/index.js",
     "b:http": "node benchmarks/http/index.js"

@@ -15,19 +15,13 @@
 ### Next.js
 
 ```bash
-cd apps/next
-npm install
-npm run build
-npm run start
+npm run a:next
 ```
 
 ### Nuxt.js
 
 ```bash
-cd apps/nuxt
-npm install
-npm run build
-npm run start
+npm run a:nuxt
 ```
 
 ## How to benchmark

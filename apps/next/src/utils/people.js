@@ -1,6 +1,7 @@
 export default function generatePeople(count = 10) {
   const people = [];
 
+  // eslint-disable-next-line no-plusplus
   for (let i = 0; i < count; i++) {
     people.push(
       {
