@@ -1,2 +1,2 @@
-benchmarks/reports/
-!/**/.gitkeep
+benchmarks/reports/**/*.json
+benchmarks/reports/**/*.html

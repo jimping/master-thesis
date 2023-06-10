@@ -1,8 +1,10 @@
-#!/bin/zsh
+# Tool
 
-# https://github.com/CondeNast/perf-timeline-cli
+https://github.com/CondeNast/perf-timeline-cli
 
-## Nuxt.js
+# Command
+
+```bash
 perf-timeline generate http://127.0.0.1:3000 \
   --path ./benchmarks/reports/nuxt/timeline-nuxt.json \
   --emulate-network-conditions \
@@ -11,5 +13,10 @@ perf-timeline generate http://127.0.0.1:3000 \
   --download--throughput 1.6 \
   --set-cpu-throttling-rate \
   --rate 4
+```
 
+# Output
+
+```bash
 bigrig --file timeline-nuxt.json --pretty-print
+```
