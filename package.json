@@ -5,14 +5,21 @@
   "scripts": {
     "a:nuxt": "cd apps/nuxt && pnpm install && pnpm build && pnpm start --port 3000",
     "a:next": "cd apps/next && pnpm install && pnpm build && pnpm start -p 3001",
-    "b:lighthouse": "node benchmarks/lighthouse/index.js",
-    "b:chrome": "node benchmarks/chrome/index.js",
-    "b:http": "node benchmarks/http/index.js"
+    "b:lighthouse": "./benchmarks/lighthouse/index.sh",
+    "b:chrome": "./benchmarks/chrome-devtools/index.sh",
+    "b:http": "./benchmarks/http/index.sh"
   },
   "author": "Jonas Imping",
   "license": "ISC",
+  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/jimping/master-thesis/issues"
   },
-  "homepage": "https://github.com/jimping/master-thesis#readme"
+  "homepage": "https://github.com/jimping/master-thesis#readme",
+  "dependencies": {
+    "@condenast/perf-timeline-cli": "^0.1.3",
+    "bigrig": "^1.3.0",
+    "lighthouse": "^10.2.0",
+    "wrk": "^1.2.1"
+  }
 }
