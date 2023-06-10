@@ -1,0 +1,16 @@
+pnpm-lock.yaml
+node_modules
+apps/nuxt/node_modules
+apps/nuxt/.idea
+apps/nuxt/.nuxt
+apps/nuxt/.output
+apps/nuxt/.vscode
+apps/nuxt/pnpm-lock.yaml
+
+apps/next/node_modules
+apps/next/.idea
+apps/next/.next
+apps/next/.vscode
+apps/next/pnpm-lock.yaml
+
+benchmarks/reports

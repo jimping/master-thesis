@@ -22,28 +22,39 @@ TH-Lübeck
 - Bigrig (version 1.3)
   https://github.com/googlearchive/node-big-rig
 
+### Installation of analyzers
+
+```bash
+brew install wrk
+
+npm install -g lighthouse perf-timeline-cli bigrig
+```
+
 ## Folder Structure
 
 - apps
   - next (version 13.4)
   - nuxt (version 3.5)
 - benchmarks
-  - lighthouse
-  - chrome dev tools
-  - http 
+  - tools
+    - chrome-devtools
+    - http (wrk)
+    - lighthouse
+  - utils
+  - reports
 
 ## How to run
 
 ### Next.js
 
 ```bash
-npm run a:next
+pnpm a:next
 ```
 
 ### Nuxt.js
 
 ```bash
-npm run a:nuxt
+pnpm a:nuxt
 ```
 
 ## How to benchmark
@@ -51,17 +62,24 @@ npm run a:nuxt
 ### Lighthouse
 
 ```bash
-npm run b:lighthouse
+pnpm b:lighthouse
 ```
 
 ### Chrome Dev Tools
 
 ```bash
-npm run b:chrome
+pnpm b:chrome
 ```
 
 ### HTTP
 
 ```bash
-npm run b:http
+pnpm b:http
+```
+
+## Count Lines of Code
+
+```bash
+npm install -g cloc
+cloc --exclude-list-file=.clocignore .
 ```
