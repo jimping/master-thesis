@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "paths": {
+      "@project/*": [
+        "../*"
+      ],
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/lib/*": [
+        "lib/*"
+      ],
+      "@/data/*": [
+        "data/*"
+      ],
+      "@/utils/*": [
+        "utils/*"
+      ],
+      "@/styles/*": [
+        "styles/*"
+      ],
+      "@/images/*": [
+        "../public/images/*"
+      ],
+      "@/assets/*": [
+        "../public/assets/*"
+      ]
+    },
+    "baseUrl": "src"
+  },
+  "include": [
+    "src"
+  ]
+}

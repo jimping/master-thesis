@@ -1,0 +1,18 @@
+{
+  "name": "master-thesis",
+  "version": "1.0.0",
+  "description": "Master thesis",
+  "scripts": {
+    "next": "cd apps/next && pnpm install && npm run build && pnpm run start",
+    "nuxt": "cd apps/nuxt && pnpm install && npm run build && pnpm run start",
+    "b:lighthouse": "node benchmarks/lighthouse/index.js",
+    "b:chrome": "node benchmarks/chrome/index.js",
+    "b:http": "node benchmarks/http/index.js"
+  },
+  "author": "Jonas Imping",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jimping/master-thesis/issues"
+  },
+  "homepage": "https://github.com/jimping/master-thesis#readme"
+}
