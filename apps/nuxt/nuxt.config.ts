@@ -27,12 +27,12 @@ export default defineNuxtConfig({
   routeRules: {
     '/client-components/ssr': { ssr: true },
     '/client-components/ssg': { prerender: true },
-    '/client-components/isr': { swr: 15 }, // SWR = ISR (revalidates in background)
+    '/client-components/isr': { swr: 5 }, // SWR = ISR (revalidates in background)
     '/client-components/csr': { ssr: false },
 
     '/server-components/ssr': { ssr: true },
     '/server-components/ssg': { prerender: true },
-    '/server-components/isr': { swr: 15 }, // SWR = ISR (revalidates in background)
+    '/server-components/isr': { swr: 5 }, // SWR = ISR (revalidates in background)
     '/server-components/csr': { ssr: false }
   },
 

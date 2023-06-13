@@ -5,8 +5,6 @@ TH-Lübeck
 
 ## Requirements
 
-- Zsh (version 5.9)<br>
-  https://www.zsh.org/
 - Node.js (version 18.7.0)<br>
   https://nodejs.org/en/
 - npm (version 8.15.0)<br>
@@ -15,19 +13,25 @@ TH-Lübeck
   https://pnpm.io/
 - Lighthouse CLI (version 10.2.0)<br>
   https://github.com/GoogleChrome/lighthouse
-- Wrk (version 4.2.0)<br>
-  https://github.com/wg/wrk
 - Perf Timeline CLI (version 0.1.3)<br>
   https://github.com/CondeNast/perf-timeline-cli
 - Bigrig (version 1.3)
   https://github.com/googlearchive/node-big-rig
+- Wrk (version 4.2.0)<br>
+  https://github.com/wg/wrk
 
-### Installation of analyzers
+### Installation of tools
 
 ```bash
+# On macOS
 brew install wrk
+# On Linux
+sudo apt-get install wrk
+# On Windows
+choco install wrk
 
-npm install -g lighthouse perf-timeline-cli bigrig
+# Install other tools with npm
+npm install -g pnpm lighthouse perf-timeline-cli bigrig
 ```
 
 ## Folder Structure
@@ -36,14 +40,14 @@ npm install -g lighthouse perf-timeline-cli bigrig
   - next (version 13.4)
   - nuxt (version 3.5)
 - benchmarks
+  - reports
   - tools
     - chrome-devtools
     - http (wrk)
     - lighthouse
   - utils
-  - reports
 
-## How to run
+## How to run the apps
 
 ### Next.js
 
@@ -57,7 +61,9 @@ pnpm a:next
 pnpm a:nuxt
 ```
 
-## How to benchmark
+## How to run the benchmarks
+
+Please make sure that the apps are running before you start the benchmarks.
 
 ### Lighthouse
 
