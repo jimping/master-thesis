@@ -36,6 +36,7 @@ npm install -g pnpm lighthouse perf-timeline-cli bigrig
 
 ## Folder Structure
 
+```
 - apps/
   - next/               --> Next.js (Version 13.4) App
     - src/              --> Next.js Code
@@ -52,6 +53,7 @@ npm install -g pnpm lighthouse perf-timeline-cli bigrig
     - http/             --> HTTP-Benchmark script (wrk)
     - lighthouse/       --> Lighthouse script
   - utils/              --> Helper scripts for benchmarking
+```
 
 ## How to Run the Apps
 
