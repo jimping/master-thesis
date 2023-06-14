@@ -1,4 +1,4 @@
-# Master Thesis:Comparative empirical study of the performance of the web frameworks Nuxt.js and Next.js
+# Master Thesis: Comparative empirical study of the performance of the web frameworks Nuxt.js and Next.js
 
 Jonas Imping<br>
 TH-Lübeck
@@ -20,11 +20,11 @@ TH-Lübeck
 - Wrk (version 4.2.0)<br>
   https://github.com/wg/wrk
 
-### Installation of tools
+### Installation of Tools
 
 ```bash
 # On macOS
-brew install wrk
+brew install wrk jq
 # On Linux
 sudo apt-get install wrk
 # On Windows
@@ -36,18 +36,24 @@ npm install -g pnpm lighthouse perf-timeline-cli bigrig
 
 ## Folder Structure
 
-- apps
-  - next (version 13.4)
-  - nuxt (version 3.5)
-- benchmarks
-  - reports
-  - tools
-    - chrome-devtools
-    - http (wrk)
-    - lighthouse
-  - utils
+- apps/
+  - next/               --> Next.js (Version 13.4) App
+    - src/              --> Next.js Code
+    - public/           --> Static Assets (Images, etc.)
+    - ...
+  - nuxt/               --> Nuxt.js (Version 3.5) App
+    - src/              --> Nuxt.js Code
+    - public/           --> Static Assets (Images, etc.)
+    - ...
+- benchmarks/
+  - reports/            --> Reports and results of the benchmarking tests
+  - tools/              --> Tools for benchmarking
+    - chrome-devtools/  --> Chrome DevTools script
+    - http/             --> HTTP-Benchmark script (wrk)
+    - lighthouse/       --> Lighthouse script
+  - utils/              --> Helper scripts for benchmarking
 
-## How to run the apps
+## How to Run the Apps
 
 ### Next.js
 
@@ -61,9 +67,9 @@ pnpm a:next
 pnpm a:nuxt
 ```
 
-## How to run the benchmarks
+## How to Run the Benchmarks
 
-Please make sure that the apps are running before you start the benchmarks.
+Please make sure that the apps are running before starting the benchmarks.
 
 ### Lighthouse
 
