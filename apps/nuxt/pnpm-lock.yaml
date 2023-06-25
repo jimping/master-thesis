@@ -11,7 +11,7 @@ dependencies:
     specifier: ^0.1.0
     version: 0.1.0
   swiper:
-    specifier: ^9.3.2
+    specifier: ^9.4.1
     version: 9.4.1
   tailwind-variants:
     specifier: ^0.1.6

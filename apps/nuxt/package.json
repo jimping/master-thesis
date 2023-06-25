@@ -16,7 +16,7 @@
         "@headlessui/vue": "^1.7.14",
         "@heroicons/vue": "^2.0.18",
         "@nuxt-modules/compression": "^0.1.0",
-        "swiper": "^9.3.2",
+        "swiper": "^9.4.1",
         "tailwind-variants": "^0.1.6",
         "vite-plugin-compression": "^0.5.1",
         "vue": "^3.3.4"

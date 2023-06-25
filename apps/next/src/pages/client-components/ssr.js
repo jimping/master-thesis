@@ -2,6 +2,7 @@ import PeopleListClient from '@/components/PeopleListClient';
 import generatePeople from '@/utils/people';
 import Head from 'next/head';
 import VimeoVideoClient from '@/components/VimeoVideoClient';
+import SliderClient from "@/components/SliderClient";
 
 export const getServerSideProps = (req) => {
   const count = req.query.c || 10;
@@ -28,6 +29,7 @@ export default function SSR({ people }) {
       </Head>
 
       <VimeoVideoClient />
+      <SliderClient items={people} />
       <PeopleListClient people={people} />
     </>
   );

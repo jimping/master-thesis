@@ -1,7 +1,4 @@
 <template>
-  <Head>
-    <script src="https://player.vimeo.com/api/player.js" />
-  </Head>
   <div class="my-10">
     <div
       class="relative rounded-lg overflow-hidden"

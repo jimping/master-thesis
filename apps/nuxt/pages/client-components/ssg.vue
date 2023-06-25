@@ -15,5 +15,6 @@ useHead({
 
 <template>
   <VimeoVideoClient />
+  <SliderClient :items="people" />
   <PeopleListClient :people="people" />
 </template>

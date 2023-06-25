@@ -9,9 +9,10 @@ useHead({
 </script>
 
 <template>
-  <Html lang="de" />
-  <NuxtLoadingIndicator />
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
+  <Html lang="de">
+    <NuxtLoadingIndicator />
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </Html>
 </template>

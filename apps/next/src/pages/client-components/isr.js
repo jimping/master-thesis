@@ -2,6 +2,7 @@ import PeopleListClient from '@/components/PeopleListClient';
 import generatePeople from '@/utils/people';
 import Head from 'next/head';
 import VimeoVideoClient from '@/components/VimeoVideoClient';
+import SliderClient from "@/components/SliderClient";
 
 export const getStaticProps = () => {
   const count = 10;
@@ -29,6 +30,7 @@ export default function ISR({ people }) {
       </Head>
 
       <VimeoVideoClient />
+      <SliderClient items={people} />
       <PeopleListClient people={people} />
     </>
   );
