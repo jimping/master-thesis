@@ -42,7 +42,7 @@ npm install -g pnpm lighthouse perf-timeline-cli bigrig
     - src/              --> Next.js Code
     - public/           --> Static Assets (Images, etc.)
     - ...
-  - nuxt/               --> Nuxt.js (Version 3.5) App
+  - nuxt/               --> Nuxt.js (Version 3.6) App
     - src/              --> Nuxt.js Code
     - public/           --> Static Assets (Images, etc.)
     - ...
