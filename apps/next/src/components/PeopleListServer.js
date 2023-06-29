@@ -1,5 +1,4 @@
 import { EnvelopeIcon, PhoneIcon } from '@heroicons/react/20/solid';
-import Image from 'next/image';
 
 /**
  * https://tailwindui.com/components/application-ui/lists/grid-lists
@@ -22,7 +21,7 @@ export default function PeopleListServer({ people }) {
               </div>
               <p className="mt-1 truncate text-sm text-gray-500">{person.title}</p>
             </div>
-            <Image
+            <img
               className="h-10 w-10 flex-shrink-0 rounded-full bg-gray-300"
               height={150}
               width={150}

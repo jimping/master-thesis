@@ -4,7 +4,7 @@ module.exports = {
   poweredByHeader: false,
   reactStrictMode: true,
 
-  output: 'standalone',
+  // output: 'standalone',
 
   images: {
     minimumCacheTTL: 31536000,

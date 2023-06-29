@@ -50,6 +50,7 @@ const format = (value, suffix = 'ms') => {
 }
 
 const metrics = {
+    'Performance-Score': (reports) => (reports.lighthouse.categories.performance.score * 100).toFixed(0) + '/100',
     'LCP': (reports) => format(reports.lighthouse.audits['largest-contentful-paint'].numericValue),
     'FID': (reports) => format(reports.lighthouse.audits['max-potential-fid'].numericValue),
     'CLS': (reports) => format(reports.lighthouse.audits['cumulative-layout-shift'].numericValue),

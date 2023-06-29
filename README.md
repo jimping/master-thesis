@@ -60,6 +60,13 @@ pnpm install
 
 ## How to Run the Apps
 
+Setting the environment variable `COMPONENTS` is optional. The default value is `10`. To run the apps with 100 components, run the following command:
+
+```bash
+COMPONENTS=100 pnpm a:all
+```
+
+
 ### Next.js
 
 ```bash

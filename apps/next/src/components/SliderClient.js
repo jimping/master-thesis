@@ -1,7 +1,6 @@
 'use client';
 
 import { EnvelopeIcon, PhoneIcon } from '@heroicons/react/20/solid';
-import Image from 'next/image';
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -44,7 +43,7 @@ export default function SliderClient({ items }) {
                 </div>
                 <p className="mt-1 truncate text-sm text-gray-500">{person.title}</p>
               </div>
-              <Image
+              <img
                 className="h-10 w-10 flex-shrink-0 rounded-full bg-gray-300"
                 height={150}
                 width={150}
