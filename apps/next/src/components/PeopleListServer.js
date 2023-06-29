@@ -23,8 +23,6 @@ export default function PeopleListServer({ people }) {
             </div>
             <img
               className="h-10 w-10 flex-shrink-0 rounded-full bg-gray-300"
-              height={150}
-              width={150}
               src={person.imageUrl}
               alt=""
             />
