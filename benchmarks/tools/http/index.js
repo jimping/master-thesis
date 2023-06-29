@@ -9,29 +9,47 @@ async function run() {
         const {app, file, path} = parser(route, '-wrk');
 
         const threads = 2
-        const connections = 20
-        const duration = 3
+        const connections = 10
+        const duration = 10
 
         console.info(`HTTP-Tests for ${app.toUpperCase()} route: ${route}...`)
 
-        const {stdout, stderr} = await exec(`wrk -t${threads} -c${connections} -d${duration}s ${route}`);
+        let stdout = ''
+        let stderr = ''
 
-        console.log('stdout:', stdout);
-        console.log('stderr:', stderr);
+        let reqs = 0
+        let transfer = 0
+        let total = 0
+        let latencyAvg = 0
+        let requestsAvg = 0
 
-        const reqs = stdout.match(/Requests\/sec:\s+([0-9.]+)/)[1];
-        const transfer = stdout.match(/Transfer\/sec:\s+([0-9.]+)/)[1];
-        const total = stdout.match(/\s+([0-9.]+) requests in/)[1];
+        try {
+            const cmd = await exec(`wrk -t${threads} -c${connections} -d${duration}s ${route}`);
+            stdout = cmd.stdout;
+            stderr = cmd.stderr;
+
+            console.log('stdout:', stdout);
+            console.log('stderr:', stderr);
+
+            reqs = stdout.match(/Requests\/sec:\s+([0-9.]+)/)[1] ?? 0
+            transfer = stdout.match(/Transfer\/sec:\s+([0-9.]+)/)[1] ?? 0;
+            total = stdout.match(/\s+([0-9.]+) requests in/)[1] ?? 0;
+            latencyAvg = stdout.match(/Latency\s+([0-9.]+)/)[1] ?? 0;
+            requestsAvg = stdout.match(/Req\/Sec\s+([0-9.]+)/)[1] ?? 0;
+        } catch (e) {
+            stdout = ''
+            stderr = ''
+        }
 
         const data = {
             req_per_sec: reqs,
             transfer_per_sec: transfer,
             total_requests: total,
             latency: {
-                avg: stdout.match(/Latency\s+([0-9.]+)/)[1],
+                avg: latencyAvg
             },
             requests: {
-                avg: stdout.match(/Req\/Sec\s+([0-9.]+)/)[1],
+                avg: requestsAvg
             },
         }
 
