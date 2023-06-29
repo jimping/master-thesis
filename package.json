@@ -7,7 +7,8 @@
     "a:next": "cd apps/next && pnpm install && pnpm build && pnpm start -p 3001",
     "b:lighthouse": "node benchmarks/tools/lighthouse/index.js",
     "b:chrome": "node benchmarks/tools/chrome-devtools/index.js",
-    "b:http": "node benchmarks/tools/http/index.js"
+    "b:http": "node benchmarks/tools/http/index.js",
+    "b:all": "pnpm run b:lighthouse && pnpm run b:chrome && pnpm run b:http"
   },
   "author": "Jonas Imping",
   "license": "ISC",

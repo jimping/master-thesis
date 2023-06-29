@@ -83,7 +83,7 @@ import 'swiper/css/scrollbar'
 
 defineProps({
   items: {
-    type: Number,
+    type: Array,
     required: true
   }
 })
