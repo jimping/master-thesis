@@ -28,10 +28,10 @@ async function run() {
             transfer_per_sec: transfer,
             total_requests: total,
             latency: {
-                avg: stdout.match(/Latency\s+([0-9.]+)/)[1] + 'ms',
+                avg: stdout.match(/Latency\s+([0-9.]+)/)[1],
             },
             requests: {
-                avg: stdout.match(/Req\/Sec\s+([0-9.]+)/)[1] + 'k',
+                avg: stdout.match(/Req\/Sec\s+([0-9.]+)/)[1],
             },
         }
 

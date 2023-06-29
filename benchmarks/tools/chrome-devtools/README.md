@@ -18,5 +18,5 @@ perf-timeline generate http://127.0.0.1:3000 \
 # Output
 
 ```bash
-bigrig --file timeline-nuxt.json --pretty-print
+bigrig --file timeline-nuxt.json
 ```

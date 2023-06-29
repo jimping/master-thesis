@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+    <title>{{title}}</title>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <style type="text/tailwindcss">
+        @layer base {
+            table tr:first-child td {
+                @apply font-bold;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="max-w-4xl mx-auto prose text-center my-10">
+    {{html}}
+</div>
+</body>
+</html>

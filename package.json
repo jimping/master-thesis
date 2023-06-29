@@ -11,7 +11,7 @@
     "b:chrome": "node benchmarks/tools/chrome-devtools/index.js",
     "b:http": "node benchmarks/tools/http/index.js",
     "b:all": "npm run b:lighthouse && pnpm run b:chrome && npm prun b:http",
-    "all": "node benchmarks/tools/index.js"
+    "b:reports": "node benchmarks/tools/report/index.js"
   },
   "author": "Jonas Imping",
   "license": "ISC",
@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/jimping/master-thesis/issues"
   },
-  "homepage": "https://github.com/jimping/master-thesis#readme"
+  "homepage": "https://github.com/jimping/master-thesis#readme",
+  "dependencies": {
+    "bigrig": "^1.3.0",
+    "handlebars": "^4.7.7"
+  }
 }
