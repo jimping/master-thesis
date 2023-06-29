@@ -40,10 +40,13 @@ const analyze = (p) => {
 }
 
 const format = (value, suffix = 'ms') => {
+    if (suffix === 'bytes') {
+        return (value / 1024)
+            .toLocaleString('de-DE', {maximumFractionDigits: 2}) + ' kB'
+    }
+
     return parseFloat(value)
-        .toFixed(2)
-        .toString()
-        .replace('.', ',') + suffix
+        .toLocaleString('de-DE', {maximumFractionDigits: 2}) + suffix
 }
 
 const metrics = {
@@ -63,7 +66,7 @@ const metrics = {
     'Anfragen': (reports) => format(reports.wrk.total_requests, ' HTTP Anfragen'),
     'Anfragen pro Sekunde': (reports) => format(reports.wrk.req_per_sec, 'req/s'),
     'Antwortzeit': (reports) => 'ø' + format(reports.wrk.latency.avg),
-    'Durchsatz': (reports) => 'ø' +format(reports.wrk.total_requests, 'MB/s'),
+    'Durchsatz': (reports) => 'ø' + format(reports.wrk.transfer_per_sec, 'MB/s'),
 }
 
 const createHtmlTable = (ar) => {
@@ -74,7 +77,7 @@ const tables = []
 
 for (const type of ['client', 'server']) {
     for (const mode of ['isr', 'ssg', 'ssr']) {
-        const title = `${type} ${mode}`.toUpperCase()
+        const title = `${type.toUpperCase()}-Components - ${mode.toUpperCase()} Strategie`
         const keys = Object.keys(metrics)
         const cols = []
 
@@ -85,7 +88,7 @@ for (const type of ['client', 'server']) {
             ])
         }
 
-        cols.unshift([title, ...keys])
+        cols.unshift(['METRIK', ...keys])
 
         const convertedToColumns = cols[0].map((_, colIndex) => cols.map(row => row[colIndex]))
 
