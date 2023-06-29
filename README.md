@@ -31,7 +31,9 @@ sudo apt-get install wrk
 choco install wrk
 
 # Install other tools with npm
-npm install -g pnpm lighthouse perf-timeline-cli bigrig
+npm install -g pnpm lighthouse perf-timeline-cli
+
+pnpm install
 ```
 
 ## Folder Structure
@@ -52,6 +54,7 @@ npm install -g pnpm lighthouse perf-timeline-cli bigrig
     - chrome-devtools/  --> Chrome DevTools script
     - http/             --> HTTP-Benchmark script (wrk)
     - lighthouse/       --> Lighthouse script
+    - report/           --> Generating report
   - utils/              --> Helper scripts for benchmarking
 ```
 
@@ -89,6 +92,18 @@ pnpm b:chrome
 
 ```bash
 pnpm b:http
+```
+
+### Reports
+
+```bash
+pnpm b:reports
+```
+
+### All together
+
+```bash
+pnpm b:all
 ```
 
 ## Count Lines of Code

@@ -10,11 +10,11 @@
     "b:lighthouse": "node benchmarks/tools/lighthouse/index.js",
     "b:chrome": "node benchmarks/tools/chrome-devtools/index.js",
     "b:http": "node benchmarks/tools/http/index.js",
-    "b:all": "npm run b:lighthouse && pnpm run b:chrome && npm prun b:http",
-    "b:reports": "node benchmarks/tools/report/index.js"
+    "b:reports": "node benchmarks/tools/report/index.js",
+    "b:all": "pnpm b:lighthouse && pnpm b:chrome && pnpm b:http && pnpm b:reports"
   },
   "author": "Jonas Imping",
-  "license": "ISC",
+  "license": "MIT",
   "type": "commonjs",
   "bugs": {
     "url": "https://github.com/jimping/master-thesis/issues"
