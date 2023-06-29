@@ -5,10 +5,13 @@
   "scripts": {
     "a:nuxt": "cd apps/nuxt && pnpm install && pnpm build && pnpm start --port 3000",
     "a:next": "cd apps/next && pnpm install && pnpm build && pnpm start -p 3001",
+    "a:nuxt:start": "cd apps/nuxt && pnpm start --port 3000",
+    "a:next:start": "cd apps/next && pnpm start -p 3001",
     "b:lighthouse": "node benchmarks/tools/lighthouse/index.js",
     "b:chrome": "node benchmarks/tools/chrome-devtools/index.js",
     "b:http": "node benchmarks/tools/http/index.js",
-    "b:all": "pnpm run b:lighthouse && pnpm run b:chrome && pnpm run b:http"
+    "b:all": "npm run b:lighthouse && pnpm run b:chrome && npm prun b:http",
+    "all": "node benchmarks/tools/index.js"
   },
   "author": "Jonas Imping",
   "license": "ISC",

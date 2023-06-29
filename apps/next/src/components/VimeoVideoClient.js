@@ -1,5 +1,5 @@
 'use client';
 
-import VimeoVideoServer from "@/components/VimeoVideoServer";
+import VimeoVideoServer from '@/components/VimeoVideoServer';
 
-export default VimeoVideoServer
+export default VimeoVideoServer;

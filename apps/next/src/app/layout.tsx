@@ -1,6 +1,6 @@
 import '@/styles/globals.css';
-import Script from "next/script";
-import React from "react";
+import Script from 'next/script';
+import React from 'react';
 
 export const metadata = {
   title: 'Next.js',
@@ -14,9 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="de">
-    <head>
+      <head>
         <Script src="https://player.vimeo.com/api/player.js" />
-    </head>
+      </head>
       <body>
         <main>
           {children}
