@@ -34,9 +34,20 @@ const reports = {
 }
 
 const analyze = (p) => {
-    const data = fs.readFileSync(path.join(__dirname, p))
+    try {
+        const data = fs.readFileSync(path.join(__dirname, p))
+        return bigrig.analyze(data)[0]
+    } catch (e) {
+        return  {
+            duration: 0,
+            paint: 0,
+            styles: 0,
+            javaScript: 0,
+            javaScriptCompile: 0,
+            parseHTML: 0,
+        }
+    }
 
-    return bigrig.analyze(data)[0]
 }
 
 const format = (value, suffix = 'ms') => {
@@ -64,10 +75,9 @@ const metrics = {
     'Code-Bundle-Size': (reports) => format(reports.lighthouse.audits['total-byte-weight'].numericValue, 'bytes'),
     '/--Chrome DevTools--/': () => (''),
     'Loading': (reports) => format(analyze(reports.devtools).duration),
-    'Painting': (reports) => format(analyze(reports.devtools).paint),
+    'Painting': (reports) => format(analyze(reports.devtools).paint + analyze(reports.devtools).styles),
     'Scripting': (reports) => format(analyze(reports.devtools).javaScript + analyze(reports.devtools).javaScriptCompile),
     'Rendering': (reports) => format(analyze(reports.devtools).parseHTML),
-    'System': (reports) => format(analyze(reports.devtools).composite),
     '/--HTTP--/': () => (''),
     'Anfragen': (reports) => format(reports.wrk.total_requests, ' HTTP Anfragen'),
     'Fehlgeschlagene Anfragen': (reports) => format(reports.wrk.timeouts, ' HTTP Anfragen'),
