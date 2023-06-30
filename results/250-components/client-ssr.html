@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+    <title>CLIENT-Components - SSR Strategie</title>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <style type="text/tailwindcss">
+        @layer base {
+            table tr:first-child td {
+                @apply font-bold;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="max-w-4xl mx-auto prose text-center my-10">
+    <h1 class="mb-5">CLIENT-Components - SSR Strategie</h1>
+
+    <table><tr><td>METRIK</td><td>NUXT</td><td>NEXT</td></tr><tr><td><b>Allgemein</b></td><td></td><td></td></tr><tr><td>Komponenten</td><td>250</td><td>250</td></tr><tr><td><b>Lighthouse</b></td><td></td><td></td></tr><tr><td>Performance-Score</td><td>56/100</td><td>67/100</td></tr><tr><td>LCP</td><td>3.689,7ms</td><td>1.983,38ms</td></tr><tr><td>FID</td><td>2.222ms</td><td>421ms</td></tr><tr><td>CLS</td><td>0ms</td><td>0,23ms</td></tr><tr><td>FCP</td><td>2.019,53ms</td><td>1.091,24ms</td></tr><tr><td>TBT</td><td>2.392,98ms</td><td>909,46ms</td></tr><tr><td>SI</td><td>4.988,54ms</td><td>2.026,7ms</td></tr><tr><td>TTFB</td><td>21,55ms</td><td>483,09ms</td></tr><tr><td>TTI</td><td>6.496,05ms</td><td>4.747,28ms</td></tr><tr><td>Code-Bundle-Size</td><td>368,86 kB</td><td>302,35 kB</td></tr><tr><td><b>Chrome DevTools</b></td><td></td><td></td></tr><tr><td>Loading</td><td>465,13ms</td><td>0ms</td></tr><tr><td>Painting</td><td>30,55ms</td><td>0ms</td></tr><tr><td>Scripting</td><td>9,25ms</td><td>0ms</td></tr><tr><td>Rendering</td><td>39,08ms</td><td>0ms</td></tr><tr><td><b>Rendering</b></td><td></td><td></td></tr><tr><td>Script Evaluation</td><td>2.961,21ms</td><td>952,86ms</td></tr><tr><td>Other</td><td>2.881,3ms</td><td>876,87ms</td></tr><tr><td>Style & Layout</td><td>1.194,02ms</td><td>727,21ms</td></tr><tr><td>Parse HTML & CSS</td><td>331,87ms</td><td>599,65ms</td></tr><tr><td>Script Parsing & Compilation</td><td>155,08ms</td><td>174,13ms</td></tr><tr><td>Rendering.</td><td>86,46ms</td><td>27,44ms</td></tr><tr><td><b>HTTP</b></td><td></td><td></td></tr><tr><td>Anfragen</td><td>1.360 HTTP Anfragen</td><td>44 HTTP Anfragen</td></tr><tr><td>Fehlgeschlagene Anfragen</td><td>0 HTTP Anfragen</td><td>0 HTTP Anfragen</td></tr><tr><td>Anfragen pro Sekunde</td><td>135,84req/s</td><td>4,4req/s</td></tr><tr><td>Antwortzeit</td><td>ø22,76ms</td><td>ø668,88ms</td></tr><tr><td>Durchsatz</td><td>ø1,44MB/s</td><td>ø5,17MB/s</td></tr></table>
+
+    <script>
+        function stringToFloat(string) {
+            return parseFloat(string.replace('.', '').replace(',', '.').replace(/[^0-9.]/g, ''));
+        }
+
+        $('table').find('tr').each(function () {
+            if ($(this).find('td:eq(0)').text() === 'Komponenten') return;
+            if ($(this).find('td:eq(1)').text() === '') return;
+            if (!$(this).find('td:eq(1)').text().match(/[\d]/)) return;
+
+            var title = $(this).find('td:eq(0)').text()
+
+            var difference = stringToFloat($(this).find('td:eq(1)').text()) -
+                    stringToFloat($(this).find('td:eq(2)').text());
+
+            var isInverse = title.match(/(Anfragen|Anfragen pro Sekunde|Durchsatz|Performance-Score)/) &&
+                    !title.match(/(Fehlgeschlagene)/);
+            var condition = isInverse ? difference > 0 : difference < 0;
+            var isEqual = difference === 0;
+
+            $(this).find('td:eq(1)').css({
+                'color': isEqual ? 'black' : (condition ? 'green' : 'red'),
+                'font-weight': isEqual ? 'normal' : (condition ? 'bold' : 'normal'),
+            });
+
+            $(this).find('td:eq(2)').css({
+                'color': isEqual ? 'black' : (!condition ? 'green' : 'red'),
+                'font-weight': isEqual ? 'normal' : (!condition ? 'bold' : 'normal'),
+            });
+        });
+    </script>
+</div>
+</body>
+</html>
