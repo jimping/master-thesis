@@ -38,8 +38,6 @@ const analyze = (p) => {
         const data = fs.readFileSync(path.join(__dirname, p))
         const br = bigrig.analyze(data)
 
-        console.log(p, br)
-
         return br[0]
     } catch (e) {
         return {
