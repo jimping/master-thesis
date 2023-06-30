@@ -64,7 +64,7 @@ pnpm install
     - chrome-devtools/  --> Chrome DevTools script
     - http/             --> HTTP-Benchmark script (wrk)
     - lighthouse/       --> Lighthouse script
-    - report/           --> Generating report
+    - reports/          --> Generating report
   - utils/              --> Helper scripts for benchmarking
 ```
 
@@ -129,3 +129,5 @@ pnpm b:all
 npm install -g cloc
 cloc --exclude-list-file=.clocignore .
 ```
+
+![Lines of Code](./screenshots/lines-of-code.png)
