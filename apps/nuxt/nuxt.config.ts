@@ -20,10 +20,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       charset: 'utf-8',
-      viewport: 'width=device-width, initial-scale=1',
-      script: [
-        { src: 'https://player.vimeo.com/api/player.js' }
-      ]
+      viewport: 'width=device-width, initial-scale=1'
     }
   },
 

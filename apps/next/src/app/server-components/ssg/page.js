@@ -17,9 +17,9 @@ export default function SSG({ searchParams }) {
 
   return (
     <>
-      <VimeoVideoServer />
       <SliderServer items={people} />
       <PeopleListServer people={people} />
+      <VimeoVideoServer />
     </>
   );
 }

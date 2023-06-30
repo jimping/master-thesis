@@ -14,7 +14,7 @@ useHead({
 </script>
 
 <template>
-  <VimeoVideoServer />
   <SliderServer :items="people" />
   <PeopleListServer :people="people" />
+  <VimeoVideoServer />
 </template>

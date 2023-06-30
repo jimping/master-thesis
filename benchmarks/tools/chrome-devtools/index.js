@@ -9,7 +9,7 @@ async function run() {
 
         console.info(`Generating Performance Timeline for ${app.toUpperCase()} route: ${route}...`)
 
-        const {stdout, stderr} = await exec(`
+        await exec(`
             perf-timeline generate ${route} \
               --path ${file} \
               --emulate-network-conditions \
@@ -17,10 +17,11 @@ async function run() {
               --set-cpu-throttling-rate \
               --rate 4
           `);
-        console.log('stdout:', stdout);
-        console.log('stderr:', stderr);
-    }
 
-};
+        console.info(`Performance Timeline for\n... ${app.toUpperCase()}\n... ${route}\nfinished. Cooling down for 10s...`)
+
+        await new Promise((resolve) => setTimeout(resolve, 10000));
+    }
+}
 
 run();

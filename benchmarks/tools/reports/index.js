@@ -50,7 +50,9 @@ const format = (value, suffix = 'ms') => {
 }
 
 const metrics = {
+    '/--Allgemein--/': () => (''),
     'Komponenten': (_) => process.env.COMPONENTS || 10,
+    '/--Lighthouse--/': () => (''),
     'Performance-Score': (reports) => (reports.lighthouse.categories.performance.score * 100).toFixed(0) + '/100',
     'LCP': (reports) => format(reports.lighthouse.audits['largest-contentful-paint'].numericValue),
     'FID': (reports) => format(reports.lighthouse.audits['max-potential-fid'].numericValue),
@@ -58,14 +60,17 @@ const metrics = {
     'FCP': (reports) => format(reports.lighthouse.audits['first-contentful-paint'].numericValue),
     'TBT': (reports) => format(reports.lighthouse.audits['total-blocking-time'].numericValue),
     'SI': (reports) => format(reports.lighthouse.audits['speed-index'].numericValue),
+    'TTFB': (reports) => format(reports.lighthouse.audits['server-response-time'].numericValue),
+    'Code-Bundle-Size': (reports) => format(reports.lighthouse.audits['total-byte-weight'].numericValue, 'bytes'),
+    '/--Chrome DevTools--/': () => (''),
     'Loading': (reports) => format(analyze(reports.devtools).duration),
     'Painting': (reports) => format(analyze(reports.devtools).paint),
     'Scripting': (reports) => format(analyze(reports.devtools).javaScript + analyze(reports.devtools).javaScriptCompile),
     'Rendering': (reports) => format(analyze(reports.devtools).parseHTML),
     'System': (reports) => format(analyze(reports.devtools).composite),
-    'TTFB': (reports) => format(reports.lighthouse.audits['server-response-time'].numericValue),
-    'Code-Bundle-Size': (reports) => format(reports.lighthouse.audits['total-byte-weight'].numericValue, 'bytes'),
+    '/--HTTP--/': () => (''),
     'Anfragen': (reports) => format(reports.wrk.total_requests, ' HTTP Anfragen'),
+    'Fehlgeschlagene Anfragen': (reports) => format(reports.wrk.timeouts, ' HTTP Anfragen'),
     'Anfragen pro Sekunde': (reports) => format(reports.wrk.req_per_sec, 'req/s'),
     'Antwortzeit': (reports) => 'ø' + format(reports.wrk.latency.avg),
     'Durchsatz': (reports) => 'ø' + format(reports.wrk.transfer_per_sec, 'MB/s'),
@@ -98,6 +103,8 @@ for (const type of ['client', 'server']) {
             title,
             filename: `${type}-${mode}`,
             html: createHtmlTable(convertedToColumns)
+                .replaceAll('/--', '<b>')
+                .replaceAll('--/', '</b>')
         })
     }
 }

@@ -28,9 +28,9 @@ export default function SSR({ people }) {
         </title>
       </Head>
 
-      <VimeoVideoClient />
       <SliderClient items={people} />
       <PeopleListClient people={people} />
+      <VimeoVideoClient />
     </>
   );
 }

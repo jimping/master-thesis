@@ -4,13 +4,13 @@
   "description": "Master thesis",
   "scripts": {
     "a:nuxt": "cd apps/nuxt && pnpm install && pnpm build && pnpm start --port 3000",
-    "a:next": "cd apps/next && pnpm install && pnpm build && pnpm start -p 3001",
+    "a:next": "cd apps/next && pnpm install && pnpm build && PORT=3001 KEEP_ALIVE_TIMEOUT=0 pnpm start",
     "a:nuxt:start": "cd apps/nuxt && pnpm start --port 3000",
-    "a:next:start": "cd apps/next && pnpm start -p 3001",
+    "a:next:start": "cd apps/next && PORT=3001 pnpm start",
     "b:lighthouse": "node benchmarks/tools/lighthouse/index.js",
     "b:chrome": "node benchmarks/tools/chrome-devtools/index.js",
     "b:http": "node benchmarks/tools/http/index.js",
-    "b:reports": "node benchmarks/tools/report/index.js",
+    "b:reports": "node benchmarks/tools/reports/index.js",
     "b:all": "pnpm b:lighthouse && pnpm b:chrome && pnpm b:http && pnpm b:reports"
   },
   "author": "Jonas Imping",

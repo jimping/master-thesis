@@ -29,9 +29,9 @@ export default function SSG({ people }) {
         </title>
       </Head>
 
-      <VimeoVideoClient />
       <SliderClient items={people} />
       <PeopleListClient people={people} />
+      <VimeoVideoClient />
     </>
   );
 }

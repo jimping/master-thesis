@@ -9,7 +9,7 @@ async function run() {
 
         console.info(`Generating Lighthouse Report for ${app.toUpperCase()} route: ${route}...`)
 
-        const {stdout, stderr} = await exec(`
+        await exec(`
            lighthouse \
               --output json \
               --output html \
@@ -18,10 +18,11 @@ async function run() {
               --only-categories=performance \
               --chrome-flags="--headless"
           `);
-        console.log('stdout:', stdout);
-        console.log('stderr:', stderr);
-    }
 
-};
+        console.info(`Lighthouse Report for\n... ${app.toUpperCase()}\n... ${route}\nfinished. Cooling down for 10s...`)
+
+        await new Promise((resolve) => setTimeout(resolve, 10000));
+    }
+}
 
 run();
