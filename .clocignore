@@ -14,3 +14,4 @@ apps/next/.vscode
 apps/next/pnpm-lock.yaml
 
 benchmarks/reports
+results
