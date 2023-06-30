@@ -15,7 +15,8 @@ async function run() {
               --emulate-network-conditions \
               --connection-type cellular2g \
               --set-cpu-throttling-rate \
-              --rate 4
+              --rate 4 \
+              --timeout 120
           `);
 
         console.info(`Performance Timeline for\n... ${app.toUpperCase()}\n... ${route}\nfinished. Cooling down for 10s...`)
