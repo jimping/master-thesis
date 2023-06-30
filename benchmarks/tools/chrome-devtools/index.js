@@ -9,7 +9,7 @@ async function run() {
 
         console.info(`Generating Performance Timeline for ${app.toUpperCase()} route: ${route}...`)
 
-        await exec(`
+        const {stdout, stderr} = await exec(`
             perf-timeline generate ${route} \
               --path ${file} \
               --emulate-network-conditions \
@@ -18,6 +18,9 @@ async function run() {
               --rate 4 \
               --timeout 120
           `);
+
+        if (stdout) console.info(stdout);
+        if (stderr) console.error(stderr);
 
         console.info(`Performance Timeline for\n... ${app.toUpperCase()}\n... ${route}\nfinished. Cooling down for 10s...`)
 
