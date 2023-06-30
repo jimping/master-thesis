@@ -4,7 +4,8 @@
     <title>{{title}}</title>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <style type="text/tailwindcss">
         @layer base {
             table tr:first-child td {
@@ -17,7 +18,39 @@
 
 <div class="max-w-4xl mx-auto prose text-center my-10">
     <h1 class="mb-5">{{title}}</h1>
+
     {{html}}
+
+    <script>
+        function stringToFloat(string) {
+            return parseFloat(string.replace('.', '').replace(',', '.').replace(/[^0-9.]/g, ''));
+        }
+
+        $('table').find('tr').each(function () {
+            if ($(this).find('td:eq(0)').text() === 'Komponenten') return;
+            if ($(this).find('td:eq(1)').text() === '') return;
+            if (!$(this).find('td:eq(1)').text().match(/[\d]/)) return;
+
+            var title = $(this).find('td:eq(0)').text()
+
+            var difference = stringToFloat($(this).find('td:eq(1)').text()) -
+                    stringToFloat($(this).find('td:eq(2)').text());
+
+            var isInverse = title.match(/(Anfragen|Anfragen pro Sekunde|Durchsatz|Performance-Score)/);
+            var condition = isInverse ? difference > 0 : difference < 0;
+            var isEqual = difference === 0;
+
+            $(this).find('td:eq(1)').css({
+                'color': isEqual ? 'black' : (condition ? 'green' : 'red'),
+                'font-weight': isEqual ? 'normal' : (condition ? 'bold' : 'normal'),
+            });
+
+            $(this).find('td:eq(2)').css({
+                'color': isEqual ? 'black' : (!condition ? 'green' : 'red'),
+                'font-weight': isEqual ? 'normal' : (!condition ? 'bold' : 'normal'),
+            });
+        });
+    </script>
 </div>
 </body>
 </html>
