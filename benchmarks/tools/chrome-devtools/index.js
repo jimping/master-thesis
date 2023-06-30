@@ -10,6 +10,7 @@ async function run() {
 
         console.info(`Generating Performance Timeline for ${app.toUpperCase()} route: ${route}...`)
 
+        const timeout = 30 * 1000; // 30 seconds
         const {stdout, stderr} = await exec(`
             perf-timeline generate ${route} \
               --path ${file} \
@@ -17,7 +18,7 @@ async function run() {
               --connection-type cellular2g \
               --set-cpu-throttling-rate \
               --rate 4 \
-              --timeout 120
+              --timeout ${timeout}
           `);
 
         if (stdout) console.info(stdout);
