@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+    <title>SERVER-Components - SSR Strategie</title>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <style type="text/tailwindcss">
+        @layer base {
+            table tr:first-child td {
+                @apply font-bold;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="max-w-4xl mx-auto prose text-center my-10">
+    <h1 class="mb-5">SERVER-Components - SSR Strategie</h1>
+
+    <table><tr><td>METRIK</td><td>NUXT</td><td>NEXT</td></tr><tr><td><b>Allgemein</b></td><td></td><td></td></tr><tr><td>Komponenten</td><td>1000</td><td>1000</td></tr><tr><td><b>Lighthouse</b></td><td></td><td></td></tr><tr><td>Performance-Score</td><td>25/100</td><td>54/100</td></tr><tr><td>LCP</td><td>27.660,33ms</td><td>2.309,22ms</td></tr><tr><td>FID</td><td>3.030ms</td><td>1.518ms</td></tr><tr><td>CLS</td><td>0ms</td><td>0,23ms</td></tr><tr><td>FCP</td><td>27.660,33ms</td><td>1.865,49ms</td></tr><tr><td>TBT</td><td>5.047,84ms</td><td>3.426,76ms</td></tr><tr><td>SI</td><td>27.660,33ms</td><td>4.002,4ms</td></tr><tr><td>TTFB</td><td>683,07ms</td><td>939,59ms</td></tr><tr><td>TTI</td><td>34.090,6ms</td><td>6.929,85ms</td></tr><tr><td>Code-Bundle-Size</td><td>5.487,81 kB</td><td>459,95 kB</td></tr><tr><td><b>Chrome DevTools</b></td><td></td><td></td></tr><tr><td>Loading</td><td>51.904,52ms</td><td>0ms</td></tr><tr><td>Painting</td><td>7.211,26ms</td><td>0ms</td></tr><tr><td>Scripting</td><td>728,58ms</td><td>0ms</td></tr><tr><td>Rendering</td><td>2.322,86ms</td><td>0ms</td></tr><tr><td><b>Rendering</b></td><td></td><td></td></tr><tr><td>Script Evaluation</td><td>6.477,87ms</td><td>2.964,5ms</td></tr><tr><td>Other</td><td>1.837,02ms</td><td>1.808,18ms</td></tr><tr><td>Style & Layout</td><td>1.513,56ms</td><td>1.656,53ms</td></tr><tr><td>Parse HTML & CSS</td><td>1.277,51ms</td><td>786,98ms</td></tr><tr><td>Script Parsing & Compilation</td><td>1.231,75ms</td><td>512,24ms</td></tr><tr><td>Rendering.</td><td>199,39ms</td><td>296,89ms</td></tr><tr><td><b>HTTP</b></td><td></td><td></td></tr><tr><td>Anfragen</td><td>25 HTTP Anfragen</td><td>9 HTTP Anfragen</td></tr><tr><td>Fehlgeschlagene Anfragen</td><td>2 HTTP Anfragen</td><td>9 HTTP Anfragen</td></tr><tr><td>Anfragen pro Sekunde</td><td>2,5req/s</td><td>0,9req/s</td></tr><tr><td>Antwortzeit</td><td>ø1,04ms</td><td>ø0ms</td></tr><tr><td>Durchsatz</td><td>ø12,56MB/s</td><td>ø7,65MB/s</td></tr></table>
+
+    <script>
+        function stringToFloat(string) {
+            return parseFloat(string.replace('.', '').replace(',', '.').replace(/[^0-9.]/g, ''));
+        }
+
+        $('table').find('tr').each(function () {
+            if ($(this).find('td:eq(0)').text() === 'Komponenten') return;
+            if ($(this).find('td:eq(1)').text() === '') return;
+            if (!$(this).find('td:eq(1)').text().match(/[\d]/)) return;
+
+            var title = $(this).find('td:eq(0)').text()
+
+            var difference = stringToFloat($(this).find('td:eq(1)').text()) -
+                    stringToFloat($(this).find('td:eq(2)').text());
+
+            var isInverse = title.match(/(Anfragen|Anfragen pro Sekunde|Durchsatz|Performance-Score)/) &&
+                    !title.match(/(Fehlgeschlagene)/);
+            var condition = isInverse ? difference > 0 : difference < 0;
+            var isEqual = difference === 0;
+
+            $(this).find('td:eq(1)').css({
+                'color': isEqual ? 'black' : (condition ? 'green' : 'red'),
+                'font-weight': isEqual ? 'normal' : (condition ? 'bold' : 'normal'),
+            });
+
+            $(this).find('td:eq(2)').css({
+                'color': isEqual ? 'black' : (!condition ? 'green' : 'red'),
+                'font-weight': isEqual ? 'normal' : (!condition ? 'bold' : 'normal'),
+            });
+        });
+    </script>
+</div>
+</body>
+</html>
