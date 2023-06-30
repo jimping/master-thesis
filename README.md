@@ -5,33 +5,35 @@ TH-Lübeck
 
 ## Requirements
 
-- Node.js (version 18.7.0)<br>
+- Node.js (version 18.16.1)<br>
   https://nodejs.org/en/
-- npm (version 8.15.0)<br>
+- NVM (version 0.39.3)<br>
+  https://github.com/nvm-sh/nvm
+- npm (version 9.7.2)<br>
   https://www.npmjs.com/
-- pnpm (version 8.1.0)<br>
+- pnpm (version 8.6.5)<br>
   https://pnpm.io/
-- Lighthouse CLI (version 10.2.0)<br>
+- Lighthouse CLI (version 10.3.0)<br>
   https://github.com/GoogleChrome/lighthouse
 - Perf Timeline CLI (version 0.1.3)<br>
   https://github.com/CondeNast/perf-timeline-cli
 - Bigrig (version 1.3)
   https://github.com/googlearchive/node-big-rig
-- Wrk (version 4.2.0)<br>
+- Wrk (version 4.1.0)<br>
   https://github.com/wg/wrk
 
 ### Installation of Tools
 
 ```bash
 # On macOS
-brew install wrk jq
+brew install wrk
 # On Linux
 sudo apt-get install wrk
 # On Windows
 choco install wrk
 
 # Install other tools with npm
-npm install -g pnpm lighthouse perf-timeline-cli
+npm install -g pnpm lighthouse @condenast/perf-timeline-cli
 
 pnpm install
 ```
