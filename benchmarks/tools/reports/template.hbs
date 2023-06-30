@@ -36,7 +36,8 @@
             var difference = stringToFloat($(this).find('td:eq(1)').text()) -
                     stringToFloat($(this).find('td:eq(2)').text());
 
-            var isInverse = title.match(/(Anfragen|Anfragen pro Sekunde|Durchsatz|Performance-Score)/);
+            var isInverse = title.match(/(Anfragen|Anfragen pro Sekunde|Durchsatz|Performance-Score)/) &&
+                    !title.match(/(Fehlgeschlagene)/);
             var condition = isInverse ? difference > 0 : difference < 0;
             var isEqual = difference === 0;
 
