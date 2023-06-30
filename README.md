@@ -22,13 +22,9 @@ TH-Lübeck
 - Wrk (version 4.1.0)<br>
   https://github.com/wg/wrk
 
-### Installation of Tools
+### Linux setup (Ubuntu 22.04)
 
 ```bash
-# On macOS
-brew install wrk
-
-# On Ubuntu 22.04
 sudo add-apt-repository ppa:savoury1/ffmpeg4
 sudo add-apt-repository ppa:savoury1/chromium
 
@@ -37,11 +33,15 @@ sudo apt-get install -y wrk libxtst6 xdg-utils libxss1 libxshmfence1 libxrender1
 
 sudo useradd thesis -G sudo -s /bin/bash
 
-# On Windows
-choco install wrk
+su thesis && cd ~
 
-# Install other tools with npm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+nvm install 18
+
 npm install -g pnpm lighthouse @condenast/perf-timeline-cli
+
+git clone https://github.com/jimping/master-thesis
+cd master-thesis
 
 pnpm install
 ```
