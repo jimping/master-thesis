@@ -10,7 +10,7 @@ async function run() {
 
         console.info(`Generating Performance Timeline for ${app.toUpperCase()} route: ${route}...`)
 
-        const timeout = 30 * 1000; // 30 seconds
+        const timeout = 2 * 60 * 1000; // 2 minutes
         const {stdout, stderr} = await exec(`
             perf-timeline generate ${route} \
               --path ${file} \
