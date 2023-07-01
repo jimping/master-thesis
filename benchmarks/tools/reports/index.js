@@ -112,7 +112,7 @@ const createHtmlTable = (ar) => {
         )
     }
 
-    // await convert()
+    await convert()
 })()
 
 
