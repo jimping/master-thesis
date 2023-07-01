@@ -8,15 +8,39 @@
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <style type="text/tailwindcss">
         @layer base {
+            table {
+                @apply w-full rounded-lg overflow-hidden shadow-xl print:shadow-none;
+            }
+
+            table tr {
+                border-color: rgba(100, 100, 100, .3) !important;
+            }
+
+            table tr td:nth-child(1) {
+                @apply pl-2 text-gray-300;
+                background: #2B2D30 !important;
+            }
+
             table tr:first-child td {
-                @apply font-bold;
+                @apply text-white font-bold;
+                background: #2B2D30 !important;
+            }
+
+            table tr td:nth-child(1) b {
+                @apply text-white;
+            }
+
+            table tr td:nth-child(1),
+            table tr td:nth-child(4),
+            table tr td:nth-child(5) {
+                background: #f8f8f8
             }
         }
     </style>
 </head>
 <body>
 
-<div class="max-w-4xl mx-auto prose text-center my-10">
+<div class="max-w-5xl mx-auto prose text-center my-10">
     <h1 class="mb-5">{{title}}</h1>
 
     {{html}}
@@ -31,25 +55,53 @@
             if ($(this).find('td:eq(1)').text() === '') return;
             if (!$(this).find('td:eq(1)').text().match(/[\d]/)) return;
 
-            var title = $(this).find('td:eq(0)').text()
+            let title = $(this).find('td:eq(0)').text()
 
-            var difference = stringToFloat($(this).find('td:eq(1)').text()) -
-                    stringToFloat($(this).find('td:eq(2)').text());
+            for (let item of [1, 3, 5]) {
+                let i = item;
+                let j = item + 1;
 
-            var isInverse = title.match(/(Anfragen|Anfragen pro Sekunde|Durchsatz|Performance-Score)/) &&
-                    !title.match(/(Fehlgeschlagene)/);
-            var condition = isInverse ? difference > 0 : difference < 0;
-            var isEqual = difference === 0;
+                let difference = stringToFloat($(this).find('td:eq(' + i + ')').text()) -
+                        stringToFloat($(this).find('td:eq(' + j + ')').text());
 
-            $(this).find('td:eq(1)').css({
-                'color': isEqual ? 'black' : (condition ? 'green' : 'red'),
-                'font-weight': isEqual ? 'normal' : (condition ? 'bold' : 'normal'),
-            });
+                let differenceReverse = stringToFloat($(this).find('td:eq(' + j + ')').text()) -
+                        stringToFloat($(this).find('td:eq(' + i + ')').text());
 
-            $(this).find('td:eq(2)').css({
-                'color': isEqual ? 'black' : (!condition ? 'green' : 'red'),
-                'font-weight': isEqual ? 'normal' : (!condition ? 'bold' : 'normal'),
-            });
+                let isInverse = title.match(/(Anfragen|Anfragen pro Sekunde|Durchsatz|Performance-Score)/) &&
+                        !title.match(/(Fehlgeschlagene)/);
+                let condition = isInverse ? difference > 0 : difference < 0;
+                let isEqual = difference === 0;
+
+                $(this).find('td:eq(' + i + ')').css({
+                    'color': isEqual ? 'black' : (condition ? 'green' : 'red'),
+                    'font-weight': isEqual ? 'normal' : (condition ? 'bold' : 'normal'),
+                });
+
+                if (!isEqual && !condition) {
+                    let differencePercent = Math.round((difference / stringToFloat($(this).find('td:eq(' + j + ')').text())) * 100);
+
+                    $(this).find('td:eq(' + i + ')').html($(this).find('td:eq(' + i + ')').text() + ' <small>(+' + differencePercent + '%)</small>');
+                }
+
+                $(this).find('td:eq(' + j + ')').css({
+                    'color': isEqual ? 'black' : (!condition ? 'green' : 'red'),
+                    'font-weight': isEqual ? 'normal' : (!condition ? 'bold' : 'normal'),
+                });
+
+                if (!isEqual && condition) {
+                    let differencePercent = Math.round((differenceReverse / stringToFloat($(this).find('td:eq(' + j + ')').text())) * 100);
+                    differencePercent = differencePercent > 0 ? '+' + differencePercent : differencePercent;
+
+                    // if is infinite
+                    if (differencePercent === '+Infinity') {
+                        differencePercent = '∞';
+                    } else {
+                        differencePercent += '%';
+                    }
+
+                    $(this).find('td:eq(' + j + ')').html($(this).find('td:eq(' + j + ')').text() + ' <small>(' + differencePercent + ')</small>');
+                }
+            }
         });
     </script>
 </div>

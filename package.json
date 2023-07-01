@@ -8,11 +8,9 @@
     "a:nuxt:start": "cd apps/nuxt && pnpm start --port 3000",
     "a:next:start": "cd apps/next && PORT=3001 pnpm start",
     "b:lighthouse": "node benchmarks/tools/lighthouse/index.js",
-    "b:chrome": "node benchmarks/tools/chrome-devtools/index.js",
     "b:http": "node benchmarks/tools/http/index.js",
     "b:reports": "node benchmarks/tools/reports/index.js",
-    "b:all": "pnpm b:lighthouse && pnpm b:chrome && pnpm b:http && pnpm b:reports",
-    "helper:convert": "node results/convert.js"
+    "b:all": "pnpm b:lighthouse && pnpm b:http && pnpm b:reports"
   },
   "author": "Jonas Imping",
   "license": "MIT",
@@ -22,8 +20,8 @@
   },
   "homepage": "https://github.com/jimping/master-thesis#readme",
   "dependencies": {
-    "bigrig": "^1.3.0",
     "handlebars": "^4.7.7",
+    "lodash": "^4.17.21",
     "puppeteer": "^20.7.4"
   }
 }

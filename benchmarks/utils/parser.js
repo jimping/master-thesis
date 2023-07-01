@@ -1,14 +1,15 @@
-module.exports = function (route, suffix = '', components = 10) {
-    const uri = route.replace(/http:\/\/(.*):(\d+)\//s, '').split('?')[0];
-    const app = route.indexOf('3000') !== -1 ? 'nuxt' : 'next';
-    const file = `./benchmarks/reports/${app}/${uri}${suffix}.json`;
+module.exports = function (route, components, group, suffix = '') {
+    const uri = route.url.replace(/http:\/\/(.*):(\d+)\//s, '').split('?')[0];
+    const app = route.app
+    const name = group.name.replace(' ', '-').replace(/[^a-zA-Z0-9-]/g, '').toLowerCase();
+    const file = `./benchmarks/reports/${name}_${components.count}_${app}_${suffix}.json`;
     const path = file.replace(/\/[^\/]+$/s, '');
-    const url = `${route}?c=${components}`
 
     return {
-        url,
         uri,
         app,
+        name,
+        group,
         file,
         path
     }

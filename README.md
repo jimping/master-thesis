@@ -61,7 +61,6 @@ pnpm install
 - benchmarks/
   - reports/            --> Reports and results of the benchmarking tests
   - tools/              --> Tools for benchmarking
-    - chrome-devtools/  --> Chrome DevTools script
     - http/             --> HTTP-Benchmark script (wrk)
     - lighthouse/       --> Lighthouse script
     - reports/          --> Generating report
@@ -97,12 +96,6 @@ Please make sure that the apps are running before starting the benchmarks.
 
 ```bash
 pnpm b:lighthouse
-```
-
-### Chrome Dev Tools
-
-```bash
-pnpm b:chrome
 ```
 
 ### HTTP
