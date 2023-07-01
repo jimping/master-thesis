@@ -19,9 +19,9 @@ module.exports = async () => {
         const page = await browser.newPage();
         await page.setContent(file.content, {waitUntil: 'domcontentloaded'});
         await page.pdf({
-            scale: 0.75,
+            scale: 0.70,
             path: file.path.replace('.html', '.pdf'),
-            margin: {top: '0px', right: '30px', bottom: '0px', left: '30px'},
+            margin: {top: '0px', right: '10px', bottom: '0px', left: '10px'},
             printBackground: true,
             format: 'A4',
         });
