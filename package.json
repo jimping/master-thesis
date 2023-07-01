@@ -11,7 +11,8 @@
     "b:chrome": "node benchmarks/tools/chrome-devtools/index.js",
     "b:http": "node benchmarks/tools/http/index.js",
     "b:reports": "node benchmarks/tools/reports/index.js",
-    "b:all": "pnpm b:lighthouse && pnpm b:chrome && pnpm b:http && pnpm b:reports"
+    "b:all": "pnpm b:lighthouse && pnpm b:chrome && pnpm b:http && pnpm b:reports",
+    "helper:convert": "node results/convert.js"
   },
   "author": "Jonas Imping",
   "license": "MIT",
