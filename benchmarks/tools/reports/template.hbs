@@ -8,6 +8,10 @@
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <style type="text/tailwindcss">
         @layer base {
+            body {
+                font-family: "Times New Roman", Times, serif;
+            }
+
             table {
                 @apply w-full rounded-lg overflow-hidden shadow-xl print:shadow-none;
             }
@@ -88,7 +92,11 @@
                 if (!isEqual && !condition) {
                     let differencePercent = Math.round((difference / stringToFloat($(this).find('td:eq(' + j + ')').text())) * 100);
 
-                    $(this).find('td:eq(' + i + ')').html($(this).find('td:eq(' + i + ')').text() + ' <small>(+' + differencePercent + '%)</small>');
+                    if (differencePercent > 0) {
+                        differencePercent = '+' + differencePercent;
+                    }
+
+                    $(this).find('td:eq(' + i + ')').html($(this).find('td:eq(' + i + ')').text() + ' <small>(' + differencePercent + '%)</small>');
                 }
 
                 $(this).find('td:eq(' + j + ')').css({
@@ -97,14 +105,14 @@
                 });
 
                 if (!isEqual && condition) {
-                    let differencePercent = Math.round((differenceReverse / stringToFloat($(this).find('td:eq(' + j + ')').text())) * 100);
-                    differencePercent = differencePercent > 0 ? '+' + differencePercent : differencePercent;
+                    let differencePercent = stringToFloat($(this).find('td:eq(' + j + ')').text()) / stringToFloat($(this).find('td:eq(' + i + ')').text()) * 100
 
-                    // if is infinite
-                    if (differencePercent === '+Infinity') {
+                    if (isInverse) {
+                        differencePercent = -Math.round((1 - (stringToFloat($(this).find('td:eq(' + j + ')').text()) / stringToFloat($(this).find('td:eq(' + i + ')').text()))) * 100) + '%'
+                    } else if (differencePercent === Infinity) {
                         differencePercent = '∞';
-                    } else {
-                        differencePercent += '%';
+                    } else if (differencePercent > 0) {
+                        differencePercent = '+' + Math.round(differencePercent) + '%';
                     }
 
                     $(this).find('td:eq(' + j + ')').html($(this).find('td:eq(' + j + ')').text() + ' <small>(' + differencePercent + ')</small>');
