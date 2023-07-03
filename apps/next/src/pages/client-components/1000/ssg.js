@@ -5,30 +5,19 @@ import VimeoVideoClient from '@/components/VimeoVideoClient';
 import SliderClient from '@/components/SliderClient';
 
 export const getStaticProps = () => {
-  const count = 10;
-  const people = generatePeople(count);
+  const people = generatePeople(1000);
 
   return {
     props: {
       people,
     },
-    revalidate: 5, // In seconds
+    revalidate: 3, // In seconds
   };
 };
 
-export default function ISR({ people }) {
+export default function SSG({ people }) {
   return (
     <>
-      <Head>
-        <title>
-          ISR -
-          {' '}
-          {people.length}
-          {' '}
-          Client Components
-        </title>
-      </Head>
-
       <SliderClient items={people} />
       <PeopleListClient people={people} />
       <VimeoVideoClient />

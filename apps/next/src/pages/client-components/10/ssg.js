@@ -4,30 +4,20 @@ import Head from 'next/head';
 import VimeoVideoClient from '@/components/VimeoVideoClient';
 import SliderClient from '@/components/SliderClient';
 
-export const getServerSideProps = (req) => {
-  const count = req.query.c || 10;
-  const people = generatePeople(count);
+export const getStaticProps = () => {
+  const people = generatePeople(10);
 
   return {
     props: {
       people,
     },
+    revalidate: 3, // In seconds
   };
 };
 
-export default function SSR({ people }) {
+export default function SSG({ people }) {
   return (
     <>
-      <Head>
-        <title>
-          SSR (hybrid) -
-          {' '}
-          {people.length}
-          {' '}
-          Client Components
-        </title>
-      </Head>
-
       <SliderClient items={people} />
       <PeopleListClient people={people} />
       <VimeoVideoClient />

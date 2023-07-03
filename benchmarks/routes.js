@@ -14,11 +14,11 @@ for (let count of amount_of_components.split(',')) {
                 routes: [
                     {
                         app: 'nuxt',
-                        url: "http://127.0.0.1:3000/client-components/ssg?c=" + count,
+                        url: "http://127.0.0.1:3000/client-components/" + count + "/ssg",
                     },
                     {
                         app: 'next',
-                        url: "http://127.0.0.1:3001/client-components/ssg?c=" + count,
+                        url: "http://127.0.0.1:3001/client-components/" + count + "/ssg",
                     }
                 ]
             },
@@ -27,11 +27,11 @@ for (let count of amount_of_components.split(',')) {
                 routes: [
                     {
                         app: 'nuxt',
-                        url: "http://127.0.0.1:3000/client-components/isr?c=" + count,
+                        url: "http://127.0.0.1:3000/client-components/" + count + "/isr",
                     },
                     {
                         app: 'next',
-                        url: "http://127.0.0.1:3001/client-components/isr?c=" + count,
+                        url: "http://127.0.0.1:3001/client-components/" + count + "/isr",
                     }
                 ]
             },
@@ -40,11 +40,11 @@ for (let count of amount_of_components.split(',')) {
                 routes: [
                     {
                         app: 'nuxt',
-                        url: "http://127.0.0.1:3000/client-components/ssr?c=" + count,
+                        url: "http://127.0.0.1:3000/client-components/" + count + "/ssr",
                     },
                     {
                         app: 'next',
-                        url: "http://127.0.0.1:3001/client-components/ssr?c=" + count,
+                        url: "http://127.0.0.1:3001/client-components/" + count + "/ssr",
                     }
                 ]
             },
@@ -54,11 +54,11 @@ for (let count of amount_of_components.split(',')) {
                 routes: [
                     {
                         app: 'nuxt',
-                        url: "http://127.0.0.1:3000/server-components/ssg?c=" + count,
+                        url: "http://127.0.0.1:3000/server-components/" + count + "/ssg",
                     },
                     {
                         app: 'next',
-                        url: "http://127.0.0.1:3001/server-components/ssg?c=" + count,
+                        url: "http://127.0.0.1:3001/server-components/" + count + "/ssg",
                     }
                 ]
             },
@@ -67,11 +67,11 @@ for (let count of amount_of_components.split(',')) {
                 routes: [
                     {
                         app: 'nuxt',
-                        url: "http://127.0.0.1:3000/server-components/isr?c=" + count,
+                        url: "http://127.0.0.1:3000/server-components/" + count + "/isr",
                     },
                     {
                         app: 'next',
-                        url: "http://127.0.0.1:3001/server-components/isr?c=" + count,
+                        url: "http://127.0.0.1:3001/server-components/" + count + "/isr",
                     }
                 ]
             },
@@ -80,11 +80,11 @@ for (let count of amount_of_components.split(',')) {
                 routes: [
                     {
                         app: 'nuxt',
-                        url: "http://127.0.0.1:3000/server-components/ssr?c=" + count,
+                        url: "http://127.0.0.1:3000/server-components/" + count + "/ssr",
                     },
                     {
                         app: 'next',
-                        url: "http://127.0.0.1:3001/server-components/ssr?c=" + count,
+                        url: "http://127.0.0.1:3001/server-components/" + count + "/ssr",
                     }
                 ]
             }

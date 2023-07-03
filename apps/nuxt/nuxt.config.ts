@@ -25,15 +25,25 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    '/client-components/ssr': { ssr: true },
-    '/client-components/ssg': { prerender: true },
-    '/client-components/isr': { swr: 5 }, // SWR = ISR (revalidates in background)
-    '/client-components/csr': { ssr: false },
+    '/client-components/10/ssr': { ssr: true },
+    '/client-components/10/ssg': { prerender: true },
+    '/client-components/10/isr': { swr: 5 }, // SWR = ISR (revalidates in background)
+    '/client-components/250/ssr': { ssr: true },
+    '/client-components/250/ssg': { prerender: true },
+    '/client-components/250/isr': { swr: 5 }, // SWR = ISR (revalidates in background)
+    '/client-components/1000/ssr': { ssr: true },
+    '/client-components/1000/ssg': { prerender: true },
+    '/client-components/1000/isr': { swr: 5 }, // SWR = ISR (revalidates in background)
 
-    '/server-components/ssr': { ssr: true },
-    '/server-components/ssg': { prerender: true },
-    '/server-components/isr': { swr: 5 }, // SWR = ISR (revalidates in background)
-    '/server-components/csr': { ssr: false }
+    '/server-components/10/ssr': { ssr: true },
+    '/server-components/10/ssg': { prerender: true },
+    '/server-components/10/isr': { swr: 5 }, // SWR = ISR (revalidates in background)
+    '/server-components/250/ssr': { ssr: true },
+    '/server-components/250/ssg': { prerender: true },
+    '/server-components/250/isr': { swr: 5 }, // SWR = ISR (revalidates in background)
+    '/server-components/1000/ssr': { ssr: true },
+    '/server-components/1000/ssg': { prerender: true },
+    '/server-components/1000/isr': { swr: 5 } // SWR = ISR (revalidates in background)
   },
 
   modules: [
