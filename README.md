@@ -15,10 +15,6 @@ TH-Lübeck
   https://pnpm.io/
 - Lighthouse CLI (version 10.3.0)<br>
   https://github.com/GoogleChrome/lighthouse
-- Perf Timeline CLI (version 0.1.3)<br>
-  https://github.com/CondeNast/perf-timeline-cli
-- Bigrig (version 1.3)
-  https://github.com/googlearchive/node-big-rig
 - Wrk (version 4.1.0)<br>
   https://github.com/wg/wrk
 
@@ -38,7 +34,7 @@ su thesis && cd ~
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 nvm install 18
 
-npm install -g pnpm lighthouse @condenast/perf-timeline-cli
+npm install -g pnpm lighthouse
 
 git clone https://github.com/jimping/master-thesis
 cd master-thesis
@@ -69,10 +65,8 @@ pnpm install
 
 ## How to Run the Apps
 
-Setting the environment variable `COMPONENTS` is optional. The default value is `10`. To run the apps with 100 components, run the following command:
-
 ```bash
-COMPONENTS=100 pnpm b:all
+pnpm b:all
 ```
 
 
