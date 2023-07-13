@@ -5,21 +5,22 @@ import VimeoVideoClient from '@/components/VimeoVideoClient';
 import SliderClient from '@/components/SliderClient';
 
 export const getStaticProps = () => {
-  const people = generatePeople(10);
+  const slider = generatePeople(10);
+  const list = generatePeople(10);
 
   return {
     props: {
-      people,
+      slider,
+      list,
     },
-    revalidate: 3, // In seconds
   };
 };
 
-export default function SSG({ people }) {
+export default function SSG({ slider, list }) {
   return (
     <>
-      <SliderClient items={people} />
-      <PeopleListClient people={people} />
+      <SliderClient items={slider} />
+      <PeopleListClient people={list} />
       <VimeoVideoClient />
     </>
   );

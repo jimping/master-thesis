@@ -5,21 +5,23 @@ import VimeoVideoClient from '@/components/VimeoVideoClient';
 import SliderClient from '@/components/SliderClient';
 
 export const getStaticProps = () => {
-  const people = generatePeople(250);
+  const slider = generatePeople(125);
+  const list = generatePeople(124);
 
   return {
     props: {
-      people,
+      slider,
+      list,
     },
     revalidate: 5, // In seconds
   };
 };
 
-export default function ISR({ people }) {
+export default function ISR({ slider, list }) {
   return (
     <>
-      <SliderClient items={people} />
-      <PeopleListClient people={people} />
+      <SliderClient items={slider} />
+      <PeopleListClient people={list} />
       <VimeoVideoClient />
     </>
   );

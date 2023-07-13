@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import generatePeople from '~/utils/people'
 
-const people = generatePeople(1000)
+const slider = generatePeople(500)
+const list = generatePeople(499)
 </script>
 
 <template>
-  <SliderServer :items="people" />
-  <PeopleListServer :people="people" />
+  <SliderServer :items="slider" />
+  <PeopleListServer :people="list" />
   <VimeoVideoServer />
 </template>

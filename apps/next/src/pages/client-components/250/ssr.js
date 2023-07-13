@@ -5,20 +5,22 @@ import VimeoVideoClient from '@/components/VimeoVideoClient';
 import SliderClient from '@/components/SliderClient';
 
 export const getServerSideProps = () => {
-  const people = generatePeople(250);
+  const slider = generatePeople(125);
+  const list = generatePeople(124);
 
   return {
     props: {
-      people,
+      slider,
+      list,
     },
   };
 };
 
-export default function SSR({ people }) {
+export default function SSR({ slider, list }) {
   return (
     <>
-      <SliderClient items={people} />
-      <PeopleListClient people={people} />
+      <SliderClient items={slider} />
+      <PeopleListClient people={list} />
       <VimeoVideoClient />
     </>
   );

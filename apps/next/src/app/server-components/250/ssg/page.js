@@ -4,12 +4,13 @@ import VimeoVideoServer from '@/components/VimeoVideoServer';
 import SliderServer from '@/components/SliderServer';
 
 export default function SSG() {
-  const people = generatePeople(250);
+  const slider = generatePeople(125);
+  const list = generatePeople(124);
 
   return (
     <>
-      <SliderServer items={people} />
-      <PeopleListServer people={people} />
+      <SliderServer items={slider} />
+      <PeopleListServer people={list} />
       <VimeoVideoServer />
     </>
   );

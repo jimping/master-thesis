@@ -6,12 +6,13 @@ import SliderServer from '@/components/SliderServer';
 export const revalidate = 5;
 
 export default function ISR() {
-  const people = generatePeople(1000);
+  const slider = generatePeople(500);
+  const list = generatePeople(499);
 
   return (
     <>
-      <SliderServer items={people} />
-      <PeopleListServer people={people} />
+      <SliderServer items={slider} />
+      <PeopleListServer people={list} />
       <VimeoVideoServer />
     </>
   );
